@@ -3,58 +3,63 @@ package duke.choice;
 public class ShopApp {
     public static void main(String[] args) {
         double total = 0.0;
-        double tax = 0.2;
+        // double tax = 0.2;
         int measurement = 3;
         System.out.println("Bienvenido a la tienda Duke Choice!");
         Customer c1 = new Customer();
-        c1.name = "Pinky";
-        c1.size = "S";
-        System.out.println("Nombre del comprador: " + c1.name);
+        c1.setName("Pinky");
+        c1.setSize(measurement);
+        System.out.println("Nombre del comprador: " + c1.getName());
         Clothing item1 = new Clothing();
         Clothing item2 = new Clothing();
         Clothing item3 = new Clothing();
         Clothing item4 = new Clothing();
-        item1.description = "Blue Jacket";
-        item1.price = 20.9;
-        item2.description = "Orange T-Shirt";
-        item2.price = 10.5;
-        item2.size = "S";
-        item3.description = "Green Scarf";
-        item3.price = 5;
-        item3.size = "S";
-        item4.description = "Blue T-Shirt";
-        item4.price = 10.5;
-        item4.size = "S";
+        item1.setDescription("Blue Jacket");
+        item1.setPrice(20.9);
+        item2.setDescription("Orange T-Shirt");
+        item2.setPrice(10.5);
+        item2.setSize("S");
+        item3.setDescription("Green Scarf");
+        item3.setPrice(5);
+        item3.setSize("S");
+        item4.setDescription("Blue T-Shirt");
+        item4.setPrice(10.5);
+        item4.setSize("S");
         Clothing[] stock = {item1, item2, item3, item4};
         /*
         System.out.println("Item 1: " + item1.description + " , " + item1.size + " , " + item1.price);
         System.out.println("Item 2: " + item2.description + " , " + item2.size + " , " + item2.price);
         */
+        /*
         for (Clothing clothe: stock){
             if(total > 15){
                 break;
             }
-            if(clothe.size.equals(c1.size)){
-                System.out.println("Item: " + clothe.description + " , " + clothe.size + " , " + clothe.price);
-                total += clothe.price;
+            if(clothe.getSize().equals(c1.getSize())){
+                System.out.println("Item: " + clothe.getDescription() + " , " + clothe.getSize() + " , " + clothe.getPrice());
+                total += clothe.getPrice();
             }
         }
-        total = total * (1+tax);
+        */
+        // total = total * (total+tax);
         // total = (item1.price + (item2.price * 2)) * (1+tax);
-        System.out.println("Precio total: " + total);
+        //System.out.println("Precio total: " + total);
+        c1.getTotalClothingCost(item1.getMIN_PRICE());
+        /*
         switch (measurement) {
             case 1: case 2: case 3:
-                c1.size = "S";
+                c1.setSize("S");
                 break;
             case 4: case 5: case 6:
-                c1.size = "M";
+                c1.setSize("M");
                 break;
             case 7: case 8: case 9:
-                c1.size = "L";
+                c1.setSize("L");
                 break;
             default:
-                c1.size = "X";
+                c1.setSize("X");
                 break;
         }
+        */
     }
 }
