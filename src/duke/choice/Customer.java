@@ -4,15 +4,21 @@ public class Customer {
     private String name;
     private String size;
     private Clothing[] items;
+
+    public Customer(String name, int measurement) {
+        this.name = name;
+        this.size = setSize(measurement);
+    }
+
     public void addItems(Clothing[] newItem){
         items = newItem;
     }
     public Clothing[] getItems() {
         return items;
     }
-    public void getTotalClothingCost(double TAX){
+    public void getTotalClothingCost(Clothing[] stock, double TAX){
         double total = 0;
-        for (Clothing clothe: items){
+        for (Clothing clothe: stock){
             System.out.println("Item: " + clothe.getDescription() + " , " + clothe.getSize() + " , " + clothe.getPrice());
             total += clothe.getPrice();
         }
@@ -30,7 +36,7 @@ public class Customer {
     public void setSize(String size) {
         this.size = size;
     }
-    public void setSize(int measurement){
+    public String setSize(int measurement){
         switch (measurement) {
             case 1: case 2: case 3:
                 size = "S";
@@ -45,5 +51,6 @@ public class Customer {
                 size = "X";
                 break;
         }
+        return size;
     }
 }

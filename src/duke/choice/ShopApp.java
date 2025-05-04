@@ -5,26 +5,27 @@ public class ShopApp {
         double total = 0.0;
         // double tax = 0.2;
         int measurement = 3;
+        System.out.println(Clothing.TAX + " " + Clothing.MIN_PRICE);
         System.out.println("Bienvenido a la tienda Duke Choice!");
-        Customer c1 = new Customer();
-        c1.setName("Pinky");
-        c1.setSize(measurement);
+        Customer c1 = new Customer("Pinky", measurement);
+        // c1.setName("Pinky");
+        // c1.setSize(measurement);
         System.out.println("Nombre del comprador: " + c1.getName());
-        Clothing item1 = new Clothing();
-        Clothing item2 = new Clothing();
-        Clothing item3 = new Clothing();
-        Clothing item4 = new Clothing();
-        item1.setDescription("Blue Jacket");
-        item1.setPrice(20.9);
-        item2.setDescription("Orange T-Shirt");
-        item2.setPrice(10.5);
-        item2.setSize("S");
-        item3.setDescription("Green Scarf");
-        item3.setPrice(5);
-        item3.setSize("S");
-        item4.setDescription("Blue T-Shirt");
-        item4.setPrice(10.5);
-        item4.setSize("S");
+        Clothing item1 = new Clothing("Blue Jacket", 20.9, "S");
+        Clothing item2 = new Clothing("Orange T-Shirt", 10.5, "S");
+        Clothing item3 = new Clothing("Green Scarf", 5, "S");
+        Clothing item4 = new Clothing("Blue T-Shirt", 10.5, "S");
+        /*item1.setDescription("Blue Jacket");
+        item1.setPrice(20.9);*/
+        // item2.setDescription("Orange T-Shirt");
+        // item2.setPrice(10.5);
+        // item2.setSize("S");
+        // item3.setDescription("Green Scarf");
+        // item3.setPrice(5);
+        // item3.setSize("S");
+        // item4.setDescription("Blue T-Shirt");
+        // item4.setPrice(10.5);
+        // item4.setSize("S");
         Clothing[] stock = {item1, item2, item3, item4};
         /*
         System.out.println("Item 1: " + item1.description + " , " + item1.size + " , " + item1.price);
@@ -44,7 +45,7 @@ public class ShopApp {
         // total = total * (total+tax);
         // total = (item1.price + (item2.price * 2)) * (1+tax);
         //System.out.println("Precio total: " + total);
-        c1.getTotalClothingCost(item1.getMIN_PRICE());
+        c1.getTotalClothingCost(stock, Clothing.TAX);
         /*
         switch (measurement) {
             case 1: case 2: case 3:
