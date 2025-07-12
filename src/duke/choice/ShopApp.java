@@ -5,8 +5,9 @@ public class ShopApp {
         double total = 0.0;
         // double tax = 0.2;
         int measurement = 3;
-        System.out.println(Clothing.TAX + " " + Clothing.MIN_PRICE);
+        System.out.println(Clothing.getTAX() + " " + Clothing.getMIN_PRICE());
         System.out.println("Bienvenido a la tienda Duke Choice!");
+        System.out.println("Prueba de que funcionan los atributos estaticos: " + Clothing.getMIN_PRICE() + ", " + Clothing.getTAX());
         Customer c1 = new Customer("Pinky", measurement);
         // c1.setName("Pinky");
         // c1.setSize(measurement);
@@ -29,8 +30,10 @@ public class ShopApp {
         Clothing[] stock = {item1, item2, item3, item4};
         /*
         System.out.println("Item 1: " + item1.description + " , " + item1.size + " , " + item1.price);
-        System.out.println("Item 2: " + item2.description + " , " + item2.size + " , " + item2.price);
         */
+        // Antes del override
+        //ahora
+        System.out.println(item2);
         /*
         for (Clothing clothe: stock){
             if(total > 15){
@@ -45,7 +48,7 @@ public class ShopApp {
         // total = total * (total+tax);
         // total = (item1.price + (item2.price * 2)) * (1+tax);
         //System.out.println("Precio total: " + total);
-        c1.getTotalClothingCost(stock, Clothing.TAX);
+        c1.getTotalClothingCost(stock, Clothing.getTAX());
         /*
         switch (measurement) {
             case 1: case 2: case 3:
