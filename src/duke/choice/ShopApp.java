@@ -1,5 +1,13 @@
 package duke.choice;
 
+import io.helidon.webserver.Routing;
+import io.helidon.webserver.ServerConfiguration;
+import io.helidon.webserver.WebServer;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import java.util.Arrays;
 
 public class ShopApp {
@@ -7,7 +15,6 @@ public class ShopApp {
         double total = 0.0;
         // double tax = 0.2;
         int measurement = 3;
-        System.out.println(Clothing.getTAX() + " " + Clothing.getMIN_PRICE());
         System.out.println("Bienvenido a la tienda Duke Choice!");
         System.out.println("Prueba de que funcionan los atributos estaticos: " + Clothing.getMIN_PRICE() + ", " + Clothing.getTAX());
         Customer c1 = new Customer("Pinky", measurement);
@@ -74,6 +81,39 @@ public class ShopApp {
         Arrays.sort(c1.getItems());
         for (Clothing c : c1.getItems()){
             System.out.println("Item: " + c);
+        }
+        // try catch
+        int count = 0;
+        int prom = 0;
+        //nota superutil, usar un ArithmeticException con un double dividido por 0 no lanza la excepcion, con int si
+        for(Clothing c : c1.getItems()){
+            if(c.getSize().equals("L")){
+                count++;
+                prom += c.getPrice();
+            }
+        }
+        try {
+            /*
+            otra forma de manejar la excepcion seria asi:
+            prom = (count == 0) ? 0 : prom/count;
+            si count == 0 devuelve 0, si no hace la division
+            */
+            prom = prom/count;
+            System.out.println("Precio promedio: " + prom + ", cantidad: " + count);
+        }
+        catch (ArithmeticException e) {
+            System.out.println("Error, algo se dividio por 0");
+        }
+        try {
+            ItemList list = new ItemList(stock);
+            Routing routing = Routing.builder().get("/items", list).build();
+            ServerConfiguration configuration = ServerConfiguration.builder()
+                    .bindAddress(InetAddress.getLocalHost()).port(8888).build();
+            WebServer webServer = WebServer.create(configuration, routing);
+            webServer.start();
+        }
+        catch (UnknownHostException e) {
+            e.printStackTrace();
         }
     }
 }
