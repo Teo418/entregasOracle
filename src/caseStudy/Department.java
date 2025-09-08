@@ -1,7 +1,6 @@
 package caseStudy;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Department{
     private String name;
@@ -14,6 +13,9 @@ public class Department{
         else {
             throw new NumberEmployeesExceededException("Number of employees exceded");
         }
+    }
+    public Department(String name) {
+        this.name = name;
     }
     public String getName() {
         return name;
@@ -29,9 +31,7 @@ public class Department{
     }
     @Override
     public String toString(){
-        for (){
-
-        }
+        return this.name;
     }
     public void addEmployee(Employee e){
         employees.add(e);
@@ -44,7 +44,7 @@ public class Department{
     public int numberEmployees(){
         return this.employees.size();
     }
-    public Employee employeeById(int id){
+    public Employee getEmployeeById(int id){
         for(Employee e : employees){
             if (e.getId() == id) return e;
         }
